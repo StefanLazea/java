@@ -1,0 +1,5 @@
+Samsung,Fold,1000.0
+IPhone,XR,999.0
+IPhone,XS,899.0
+IPhone,XR,999.0
+IPhone,XS,899.0
