@@ -1,0 +1,112 @@
+package ro.ase.java;
+
+import ro.ase.java.models.Vehicle;
+
+public class Application {
+	public static void main(String[] args)
+	{
+		System.out.println("It's working");
+		System.out.println("Hello again"); 
+		// sysout -> ctrl+space
+		Vehicle v=new Vehicle();
+		v.setMake("Porsche");
+		v.setModel("911");
+		v.setCubicCapacity(3000);
+		v.setWeight(1.8f);
+		v.setPrice(180000);
+		v.setElectricVehicle(false);
+		
+		System.out.println("Autoturismul "+v.getMake() + " "+v.getModel() +
+						" are un motor de "+ v.getCubicCapacity()+ " cc, o greutate de "+
+						v.getWeight()+" tone, un pret de "+
+						v.getPrice()+ " euro si este electric: " +
+						v.getIsElectric());
+	}
+}
+
+
+package ro.ase.java.models;
+
+public class Vehicle {
+	// modificatorul default - vizibil la nivel de pachet
+	private String make;
+	private String model;
+	private int cubicCapacity;
+	private float weight;
+	private double price;
+	private boolean electricVehicle;
+	
+	//Metode de acces
+	
+	public Vehicle()   //constructor default
+	{
+		
+	}
+	
+	public Vehicle(String make, 
+					String model,
+					int cc,
+					float weight,
+					double price,
+					boolean isElectric)
+	{	
+		this.make = make;
+		this.model = model;
+		this.cubicCapacity = cc;
+		this.weight = weight;
+		this.price = price;
+		this.electricVehicle = isElectric;	
+	}
+	
+	public void setMake(String make)
+	{
+		this.make=make;
+	}
+	public void setModel(String model)
+	{
+		this.model=model;
+	}
+	public void setCubicCapacity( int cc)
+	{
+		this.cubicCapacity=cc;
+	}
+	public void setWeight(float weight)
+	{
+		this.weight=weight;
+	}
+	public void setPrice(double price)
+	{
+		this.price=price;
+	}
+	public void setElectricVehicle(boolean isElectric)
+	{
+		this.electricVehicle=isElectric;
+	}
+	
+	public String getMake()
+	{
+		return this.make;
+	}
+	public String getModel()
+	{
+		return this.model;
+	}
+	
+	public int getCubicCapacity()
+	{
+		return this.cubicCapacity;
+	}
+	public float getWeight()
+	{
+		return this.weight;
+	}
+	public double getPrice()
+	{
+		return this.price;
+	}
+	public boolean getIsElectric()
+	{
+		return this.electricVehicle;
+	}
+	
+}

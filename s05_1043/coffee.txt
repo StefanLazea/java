@@ -1,0 +1,8 @@
+Cafe Latte,GUATEMALA,16.5
+Cappuccino,ETIOPIA,15.0
+Flat White,ARABICA,13.0
+Flat White,ARABICA,13.0
+Flat White,ARABICA,13.0
+Flat White,ARABICA,13.0
+Flat White,ARABICA,13.0
+Flat White,ARABICA,13.0

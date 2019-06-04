@@ -1,0 +1,4 @@
+multi cast si threads
+un mini chat ;;; tutoriale
+
+mesaj la server -> de la server la clienti

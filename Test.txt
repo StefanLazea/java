@@ -1,0 +1,10 @@
+6 mai -- Test seminar!!!
+
+Lab 3 si 5 la Toma, cu testare automata
+
+Pt a scrie intr-un fisire text putem folosi: FileWriter si BufferedWriter care accepta un fisier de tip FileWriter
+
+A Map can contain distinct keys with same values. (random values)
+
+
+Pe gitHub model de test de rezolvat pana saptamana viitoare
