@@ -1,0 +1,122 @@
+package eu.ase.test;
+
+import java.io.Serializable;
+
+/*
+ * Grade 3: 
+ * Create the abstract class Subscriber which implements Cloneable, AutoCloseable and java.io.Serializable interfaces.
+ * 
+ * The class has the following private fields:
+ * subscriberId : int which is the id of the subscriber
+ * name : String for the name of the subscriber
+ * subscriberNo : float for the subscriber number / the subscription id
+ * subscriptionCost : float for the cost of the subscription
+ * serialVersionUID : static long
+ * 
+ * Create the constructor method without parameters and the one with 4 parameters: 
+ * "subscriberId" of type int, "name" of type String, "subscriberNo" of type float, "subscriptionCost" of type float
+ * The constructor with parameters should throw an Exception if the subscriber number (subscriberNo) is less than 0 
+ * 
+ * Create the private, static and final field className : String with the value "eu.ase.test.Subscriber" 
+ * and associated public, static get method (getClassName)
+ * Create the private, static field subscribersNo and and associated public, static get method (getPassengersNo -> returns int). 
+ * This variable (subscribersNo) / field is used for counting how many objects from this class have been created. 
+ * Also be sure this variable is incremented into the constructors and clone method and decremented into close method.
+ * 
+ * Implement proper get/set methods.
+ * 
+ * Implement consistently the clone method for creating deep copy of the current object:
+ * public clone() which return Object and may throw CloneNotSupportedException
+ * 
+ * AutoCloseable (close() -> returns void)
+ * 
+ * Declare public abstract method getAbstractSubscriberId which has no parameter and returns -> String.
+ */
+
+/*
+ * Nota 3: 
+ * implementati clasa abstracta Subscriber ce implementeaza interfetele: Cloneable, AutoCloseable si java.io.Serializable .
+ * 
+ * Clasa are urmatoarele campuri private:
+ * subscriberId : int ce contine identifcatorul de abonat
+ * name : String ce contine numele abonatului
+ * subscriberNo : float pentru numarul abonatului / identificatorul abonamentului
+ * subscriptionCost : float pentru costul abonamentului
+ * serialVersionUID : static long
+ * 
+ * Trebuie implementata metoda constructor fara parameteri si contructorul cu 4 parameteri: 
+ * "subscriberId" de tip int, "name" de tip String, "subscriberNo" de tip float, "subscriptionCost" de tip float
+ * Constructorul cu parametri trebuie sa dea o exceptie din Exception daca numarul locului (subscriberNo) este mai mic decat 0 
+ * 
+ * Clasa contine campul className : String ce este privat, static si final cu valoarea: "eu.ase.test.Subscriber" 
+ * si metoda de tip get asociata - publica si statica (getClassName)
+ * 
+ * Clasa mai contine un camp private si static "subscribersNo" (numar total de abonati / obiecte create din aceasta clasa)
+ * si metoda publica si statica de tip get asociata (getSubscribersNo -> returns int). 
+ * Campul (subscribersNo) este utilizat pentru a contoriza numarul de obiecte create din aceasta clasa. 
+ * Acest camp este incrementat in constructori si metoda clone si decrementat in metoda close.
+ * 
+ * Implementati metodele get/set in mod crespunzator pentru fiecare camp.
+ * 
+ * Implementati consistent metoda clone pentru a creeea obiecte clona de tip "deep copy" din obiectul curent:
+ * public clone() -> return Object si "throw CloneNotSupportedException"
+ * 
+ * Implementati interfata AutoCloseable (close() -> return void)
+ * 
+ * Declarati metoda publica si abstracta: getAbstractSubscriberId ce nu are parametri si returneaza -> String.
+ */
+
+public abstract class Subscriber implements Cloneable, AutoCloseable, Serializable {
+
+	private int subscriberId;
+	private String name;
+	private float subscriberNo;
+	private float subscriptionCost;
+	private static final long serialVersionUID = 1L;
+	static private final String className="eu.ase.test.Subscriber";
+	static	private int  subscribersNo=0;
+	
+	public static int getSubscribersNo() {
+		return subscribersNo;
+	}
+
+	public static String getClassName() {
+		return className;
+	}
+	
+	public Subscriber() 
+	{
+	Subscriber:subscribersNo++;
+	}
+	public Subscriber(int subscriberId,String name,float subscriberNo,float subscriptionCost)
+	{
+		this.subscriberId=subscriberId;
+		this.name=name;
+		if(subscriberNo<0)
+			try {
+				throw new Exception("  ");
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		this.subscriberNo=subscriberNo;
+		this.subscriptionCost=subscriptionCost;
+		Subscriber:subscribersNo++;
+	}
+	
+	
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		Subscriber copy=(Subscriber) super.clone();
+		copy.subscriberId=this.subscriberId;
+		copy.name= this.name;
+		copy.subscriberNo=this.subscriberNo;
+		copy.subscriptionCost=this.subscriptionCost;
+		
+		
+		return copy;
+		
+	}
+	
+}
+

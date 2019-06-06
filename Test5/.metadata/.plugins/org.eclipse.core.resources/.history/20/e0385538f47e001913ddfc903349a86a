@@ -1,0 +1,130 @@
+package eu.ase.test;
+
+import java.io.Serializable;
+
+/*
+ * Grade 4: Create the class VipPassenger which extends Passenger implements Cloneable and Comparable<VipPassenger> interfaces.
+ * 
+ * Besides the fields and methods inherited from the abstract class Passenger, the class VipPassenger has the following private fields:
+ * vipCardNo : String for the VIP card number for loyalty program of the travelers
+ * serialVersionUID : static long
+ * 
+ * Create the constructor method with 5 parameters: 
+ * "bookingId" of type int, "name" of type String, "placeNo" of type float, "age" of type float, "vipCardNo" of type String
+ * The constructor should throw an Exception if the place number (placeNo) is less than 0 or the card number is null
+ * 
+ * Implement proper get/set method(s) and override equals method:
+ * public method equals(Object o) which returns boolean
+ * The setVipCardNo method must throw an exception if the card number is a null String.
+ * 
+ * Implement consistently the clone method for creating deep copy of the current object:
+ * public clone() which return Object and may throw CloneNotSupportedException
+ * 
+ * Override the methods from Comparable (compareTo() -> returns int and it compares passengers in terms of vipCardNo)
+ * 
+ * Override method getAbstractBookingId() which returns a String which represents the concatenation of the inherited value
+ * for the bookingId and vipCardNo filed value
+ * 
+ * Override toString() -> String method in terms of returning the String concatenation of the fields content
+ */
+
+/*
+ * Nota 4: Creati clasa VipPassenger ce este derivata din Passenger si implementeaza interfetele Cloneable si Comparable<Passenger>.
+ * 
+ * Pe langa campurile si metodele mostenite din clasa abstracta Passenger, clasa VipPassengerare urmatoarele campuri private aditional:
+ * vipCardNo : String pentru numarul de card VIP al pasagerului
+ * serialVersionUID : static long
+ * 
+ * Implementati metoda constructor cu 5 parameteri: 
+ * "bookingId" de tip int, "name" de tip String, "placeNo" de tip float, "age" de tip float, "vipCardNo" de tip String
+ * Constructorul arunca o exceptie din clasa Exception daca numarul locului (placeNo) este mai mic de 0 sau numarul de card este null
+ * 
+ * Implementati corespunsator metodele get/set si supra-screti metoda equals:
+ * metoda publica equals(Object o) ce returneaza boolean
+ * Metoda setVipCardNo produce o exceptie din clasa Exception daca numarul de card este null.
+ * 
+ * Implementati consistent metoda clone pentru a creeea obiecte clona de tip "deep copy" din obiectul curent:
+ * public clone() -> return Object si "throw CloneNotSupportedException"
+ * 
+ * Supra-scrieti metoda compareTo din interfata Comparable (compareTo() -> return int ce compara pasagerii in functie de campul vipCardNo)
+ * 
+ * Supra-scrieti si implementati metoda getAbstractBookingId() ce returneaza un obiect de tip String 
+ * ce reprezinta concatenarea valoarea mostenita pentru bookingId si valoarea capului vipCardNo
+ * 
+ * Supra-scrieti metoda toString() -> String astfel incat sirul de caractere returnat sa contina textual reprezentarea tuturor campurilor din clasa
+ */
+
+public class VipPassenger extends Passenger implements Cloneable, Comparable<VipPassenger>, Serializable{
+	
+	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7256659934675464706L;
+	private String vipCardNo;
+	
+	
+	public VipPassenger(int bookindId, String name, float placeNo, float age, String vipCardNo) throws Exception {
+		super(bookindId,name,placeNo,age);
+		if(placeNo<0 || vipCardNo==null) {
+			throw new Exception();
+		}
+	}
+	
+	//OVERRIDE
+	@Override
+	public int compareTo(VipPassenger o) {
+		
+		return this.vipCardNo.compareTo(o.vipCardNo); 
+	}
+
+	@Override
+	public String getAbstractBookingId() {
+		
+		StringBuilder builder=new StringBuilder();
+		builder.append(this.getBookingId());
+		builder.append(this.vipCardNo);
+		String string=new String(builder);
+		
+		return string;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		
+		if(obj==null|| !(obj instanceof VipPassenger)) {
+			return false;
+		}
+		
+		VipPassenger passenger=(VipPassenger)obj;
+		
+
+		return passenger.getBookingId()==this.getBookingId() &&
+				passenger.getName().equals(this.getName()) &&
+				passenger.getPlaceNo()==this.getPlaceNo() &&
+				passenger.getAge()==this.getAge() &&
+				passenger.vipCardNo.equals(this.vipCardNo);
+	}
+
+	public String getVipCardNo() {
+		return vipCardNo;
+	}
+
+	public void setVipCardNo(String vipCardNo) throws Exception {
+		if(vipCardNo==null) {
+			throw new Exception();
+		}
+		this.vipCardNo = vipCardNo;
+	}
+	
+	
+	@Override
+	public Object clone() throws CloneNotSupportedException {
+		
+		VipPassenger passenger=(VipPassenger)super.clone();
+
+		return passenger;
+	}
+	
+}
+	
